@@ -18,21 +18,57 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: isDarkMode ? colorDark : colorLight,
-      body: Container(
-        padding: const EdgeInsets.all(60),
-        child: Column(
-          children: [
-            Center(
-              child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isDarkMode = !isDarkMode;
-                  });
-                },
-                child: _switchMode(),
+      body: SafeArea(
+        child: Container(
+          child: Column(
+            children: [
+              Center(
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isDarkMode = !isDarkMode;
+                    });
+                  },
+                  child: _switchMode(),
+                ),
               ),
-            )
-          ],
+              const SizedBox(
+                height: 70,
+              ),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 32),
+                alignment: Alignment.centerRight,
+                child: Text(
+                  "5",
+                  style: TextStyle(
+                      color: isDarkMode ? Colors.white : Colors.redAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 55),
+                ),
+              ),
+              Container(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 32, vertical: 12),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("=",
+                          style: TextStyle(
+                              color: isDarkMode ? Colors.green : Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24)),
+                      Text("3 + 2",
+                          style: TextStyle(
+                              color: isDarkMode ? Colors.green : Colors.grey,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24))
+                    ],
+                  )),
+              SizedBox(
+                height: 10,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -57,6 +93,43 @@ class _CalculatorState extends State<Calculator> {
               color: isDarkMode ? Colors.green : Colors.grey,
             )
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buttonRounded(
+      {String? title,
+      double padding = 17,
+      IconData? icon,
+      Color? iconColor,
+      Color? textColor}) {
+    return Padding(
+      padding: const EdgeInsets.all(8),
+      child: NeoContainer(
+        darkMode: isDarkMode,
+        borderRadius: BorderRadius.circular(40),
+        padding: EdgeInsets.all(padding),
+        child: Container(
+          width: padding * 2,
+          height: padding * 2,
+          child: Center(
+              child: title != null
+                  ? Text(
+                      '$title',
+                      style: TextStyle(
+                          color: textColor != null
+                              ? textColor
+                              : isDarkMode
+                                  ? Colors.white
+                                  : Colors.black,
+                          fontSize: 30),
+                    )
+                  : Icon(
+                      icon,
+                      color: iconColor,
+                      size: 30,
+                    )),
         ),
       ),
     );
