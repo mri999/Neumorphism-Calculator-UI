@@ -22,14 +22,17 @@ class _CalculatorState extends State<Calculator> {
         child: Container(
           child: Column(
             children: [
-              Center(
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      isDarkMode = !isDarkMode;
-                    });
-                  },
-                  child: _switchMode(),
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isDarkMode = !isDarkMode;
+                      });
+                    },
+                    child: _switchMode(),
+                  ),
                 ),
               ),
               const SizedBox(
@@ -39,7 +42,7 @@ class _CalculatorState extends State<Calculator> {
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 alignment: Alignment.centerRight,
                 child: Text(
-                  "5",
+                  "22",
                   style: TextStyle(
                       color: isDarkMode ? Colors.white : Colors.redAccent,
                       fontWeight: FontWeight.bold,
@@ -57,16 +60,90 @@ class _CalculatorState extends State<Calculator> {
                               color: isDarkMode ? Colors.green : Colors.grey,
                               fontWeight: FontWeight.bold,
                               fontSize: 24)),
-                      Text("3 + 2",
+                      Text("10*2+2",
                           style: TextStyle(
                               color: isDarkMode ? Colors.green : Colors.grey,
                               fontWeight: FontWeight.bold,
                               fontSize: 24))
                     ],
                   )),
-              SizedBox(
-                height: 10,
-              ),
+              const Spacer(),
+              Column(
+                children: [
+                  _getRowItem(
+                      _button(
+                          title: "C",
+                          textColor:
+                              isDarkMode ? Colors.green : Colors.redAccent),
+                      _button(
+                        title: "(",
+                      ),
+                      _button(
+                        title: ")",
+                      ),
+                      _button(
+                          title: "/",
+                          textColor:
+                              isDarkMode ? Colors.green : Colors.redAccent)),
+                  _getRowItem(
+                      _button(
+                        title: "7",
+                      ),
+                      _button(
+                        title: "8",
+                      ),
+                      _button(
+                        title: "9",
+                      ),
+                      _button(
+                          title: "X",
+                          textColor:
+                              isDarkMode ? Colors.green : Colors.redAccent)),
+                  _getRowItem(
+                      _button(
+                        title: "4",
+                      ),
+                      _button(
+                        title: "5",
+                      ),
+                      _button(
+                        title: "6",
+                      ),
+                      _button(
+                          title: "-",
+                          textColor:
+                              isDarkMode ? Colors.green : Colors.redAccent)),
+                  _getRowItem(
+                      _button(
+                        title: "1",
+                      ),
+                      _button(
+                        title: "2",
+                      ),
+                      _button(
+                        title: "3",
+                      ),
+                      _button(
+                          title: "+",
+                          textColor:
+                              isDarkMode ? Colors.green : Colors.redAccent)),
+                  _getRowItem(
+                      _button(
+                        title: "0",
+                      ),
+                      _button(
+                        title: ".",
+                      ),
+                      _button(
+                          icon: Icons.backspace_outlined,
+                          iconColor:
+                              isDarkMode ? Colors.green : Colors.redAccent),
+                      _button(
+                          title: "=",
+                          textColor:
+                              isDarkMode ? Colors.green : Colors.redAccent))
+                ],
+              )
             ],
           ),
         ),
@@ -98,7 +175,7 @@ class _CalculatorState extends State<Calculator> {
     );
   }
 
-  Widget _buttonRounded(
+  Widget _button(
       {String? title,
       double padding = 17,
       IconData? icon,
@@ -132,6 +209,13 @@ class _CalculatorState extends State<Calculator> {
                     )),
         ),
       ),
+    );
+  }
+
+  Widget _getRowItem(Widget w1, Widget w2, Widget w3, Widget w4) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [w1, w2, w3, w4],
     );
   }
 }
