@@ -1,16 +1,3 @@
-# Calculator
+# NeuMorphism Calculator UI
+<img width="486" alt="Screenshot 2022-01-30 at 9 13 31 PM" src="https://user-images.githubusercontent.com/38829097/151706089-7f340f74-55de-494b-af9a-e6d72b7e0140.png"> <img width="517" alt="Screenshot 2022-01-30 at 9 13 45 PM" src="https://user-images.githubusercontent.com/38829097/151706099-8821f0c3-5d70-4d2f-86f4-150f85afdcd1.png">
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
